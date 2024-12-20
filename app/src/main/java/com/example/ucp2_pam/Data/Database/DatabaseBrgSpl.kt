@@ -19,6 +19,7 @@ abstract class DatabaseBrgSpl : RoomDatabase() {
 
     companion object {
         @Volatile
+
         private var Instance: DatabaseBrgSpl? = null
 
         fun getDatabase(context: Context): DatabaseBrgSpl {

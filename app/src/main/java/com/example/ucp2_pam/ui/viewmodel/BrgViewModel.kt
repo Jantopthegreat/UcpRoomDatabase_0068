@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class DaftarBrgViewModel ( private val repositoryBrg: RepositoryBrg ) : ViewModel() {
+class BrgViewModel ( private val repositoryBrg: RepositoryBrg ) : ViewModel() {
 
     val brgUiState: StateFlow<BrgUiState> = repositoryBrg.getAllBrg()
         .filterNotNull()

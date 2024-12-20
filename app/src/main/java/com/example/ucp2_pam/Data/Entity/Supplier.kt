@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "supplier")
 data class Supplier(
     @PrimaryKey
-    val id: String,
+    val id_spl: String,
     val nama_spl: String,
     val kontak: String,
     val alamat: String,

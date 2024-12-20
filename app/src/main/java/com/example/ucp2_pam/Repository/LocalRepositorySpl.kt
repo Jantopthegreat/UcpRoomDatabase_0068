@@ -15,8 +15,8 @@ class LocalRepositorySpl(private val supplierDao: SupplierDao) : RepositorySpl {
         return supplierDao.getAllSpl()
     }
 
-    override fun getSpl(id: String) {
-        return supplierDao.getSpl(id)
+    override fun getSpl(id_spl: String) {
+        return supplierDao.getSpl(id_spl)
     }
 
 

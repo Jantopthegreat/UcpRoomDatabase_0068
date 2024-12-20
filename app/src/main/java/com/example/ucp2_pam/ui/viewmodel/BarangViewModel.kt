@@ -24,7 +24,7 @@ class BarangViewModel (private val repositoryBrg: RepositoryBrg): ViewModel() {
     fun validateFields(): Boolean {
         val event = uiState.barangEvent
         val errorState = BarangFormErrorState(
-            id = if (event.id.isNotEmpty()) null else "ID tidak boleh kosong",
+            id_brg = if (event.id_brg.isNotEmpty()) null else "ID tidak boleh kosong",
             nama_brg = if (event.nama_brg.isNotEmpty()) null else "Nama Barang tidak boleh kosong",
             deskripsi = if (event.deskripsi.isNotEmpty()) null else "Deskripsi tidak boleh kosong",
             harga = if (event.harga.isNotEmpty()) null else "Harga tidak boleh kosong",
@@ -70,7 +70,7 @@ class BarangViewModel (private val repositoryBrg: RepositoryBrg): ViewModel() {
 
 
 data class BarangFormErrorState(
-    val id: String? = null,
+    val id_brg: String? = null,
     val nama_brg: String? = null,
     val deskripsi: String? = null,
     val harga: String? = null,
@@ -79,7 +79,7 @@ data class BarangFormErrorState(
 ) {
 
     fun isValid(): Boolean{
-        return id == null && nama_brg == null && deskripsi == null &&
+        return id_brg == null && nama_brg == null && deskripsi == null &&
                 harga == null && stok == null && nama_Suplier == null
     }
 }
@@ -91,7 +91,7 @@ data class BarangUiState(
 )
 
 data class BarangEvent (
-    val id: String = "",
+    val id_brg: String = "",
     val nama_brg: String = "",
     val deskripsi: String = "",
     val harga: String = "",
@@ -100,7 +100,7 @@ data class BarangEvent (
 )
 
 fun BarangEvent.toBarangEntity(): Barang = Barang (
-    id = id,
+    id_brg = id_brg,
     nama_brg = nama_brg,
     deskripsi = deskripsi,
     harga = harga,

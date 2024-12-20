@@ -16,8 +16,8 @@ class LocalRepositoryBrg (private val barangDao : BarangDao): RepositoryBrg
             return barangDao.getAllBrg()
         }
 
-        override fun getBrg(id: String): Flow<Barang> {
-            return barangDao.getBrg(id)
+        override fun getBrg(id_brg: String): Flow<Barang> {
+            return barangDao.getBrg(id_brg)
         }
 
         override suspend fun deleteBrg(barang: Barang) {

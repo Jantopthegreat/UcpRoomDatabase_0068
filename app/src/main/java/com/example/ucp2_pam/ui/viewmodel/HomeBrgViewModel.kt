@@ -45,10 +45,10 @@ class HomeBrgViewModel(private val repositoryBrg: RepositoryBrg) : ViewModel() {
             )
         )
 
-    private fun getCardColor(stock: Int): String {
+    private fun getCardColor(stok: Int): String {
         return when {
-            stock == 0 -> "gray"
-            stock in 1..10 -> "red"
+            stok == 0 -> "gray"
+            stok in 1..10 -> "red"
             else -> "green"
         }
     }

@@ -4,6 +4,12 @@ import com.example.ucp2_pam.Data.Entity.Barang
 
 
 
+data class BarangUiState(
+    val barangEvent: BarangEvent = BarangEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+    val snackBarMessage: String? = null,
+)
+
 data class BarangEvent (
     val id: String = "",
     val nama_brg: String = "",

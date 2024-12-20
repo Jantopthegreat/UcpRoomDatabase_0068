@@ -33,7 +33,32 @@ class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
         return errorState.isValid()
     }
 
+    fun saveData(){
+        val currentEvent = uiState.barangEvent
 
+        if (validateFields()){
+            viewModelScope.launch{
+                try {
+                    repositoryBrg.insertBrg(currentEvent.toBarangEntity())
+                    uiState = uiState.copy(
+                        snackBarMessage = "Data Berhasil Disimpan",
+                        barangEvent = BarangEvent(),
+                        isEntryValid = FormErrorState()
+                    )
+
+                }
+                catch (e: Exception) {
+                    uiState = uiState.copy(
+                        snackBarMessage = " Data gagal Disimpan"
+                    )
+                }
+            }
+        } else {
+            uiState = uiState.copy(
+                snackBarMessage = " Input tidak valid Periksa kembali Data Anda!"
+            )
+        }
+    }
 data class FormErrorState(
     val id: String? = null,
     val nama_brg: String? = null,

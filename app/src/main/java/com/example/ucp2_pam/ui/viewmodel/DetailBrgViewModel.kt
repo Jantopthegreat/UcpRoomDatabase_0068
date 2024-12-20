@@ -6,6 +6,19 @@ import com.example.ucp2_pam.Data.Entity.Barang
 
 
 
+data class DetailBrgUiState(
+    val detailBrgUiEvent: BarangEvent = BarangEvent(),
+    val isLoading: Boolean = false,
+    val isError: Boolean = false,
+    val errorMessage: String = ""
+) {
+    val isUiEventEmpty: Boolean
+        get() = detailBrgUiEvent == BarangEvent()
+
+    val isUiEventNotEmpty: Boolean
+        get() = detailBrgUiEvent != BarangEvent()
+}
+
 fun Barang.toDetailBrgUiEvent(): BarangEvent {
     return BarangEvent(
         id = id,

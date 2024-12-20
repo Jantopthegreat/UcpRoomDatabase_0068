@@ -2,9 +2,7 @@ package com.example.ucp2_pam.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ucp2_pam.Data.Entity.Barang
 import com.example.ucp2_pam.Data.Entity.Supplier
-import com.example.ucp2_pam.Repository.RepositoryBrg
 import com.example.ucp2_pam.Repository.RepositorySpl
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.SharingStarted

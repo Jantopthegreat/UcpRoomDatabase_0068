@@ -13,12 +13,16 @@ object DestinasiHomeBrg : AlamatNavigasi {
 
 object DestinasiDetailBrg : AlamatNavigasi {
     override val route = "detailBrg"
-    const val ID = "id_brg"
-    val routesWithArg = "$route/{$ID}"
+    const val IDBrg = "id_brg"
+    val routesWithArg = "$route/{$IDBrg}"
 }
 
 object DestinasiUpdateBrg : AlamatNavigasi {
     override val route = "updateBrg"
-    const val ID = "id_brg"
-    val routesWithArg = "$route/{$ID}"
+    const val IDBrg = "id_brg"
+    val routesWithArg = "$route/{$IDBrg}"
+}
+
+object DestinasiHomeSpl : AlamatNavigasi {
+    override val route = "homeSpl"
 }

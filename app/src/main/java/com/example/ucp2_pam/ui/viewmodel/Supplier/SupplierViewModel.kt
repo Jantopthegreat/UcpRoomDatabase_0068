@@ -1,4 +1,4 @@
-package com.example.ucp2_pam.ui.viewmodel
+package com.example.ucp2_pam.ui.viewmodel.Supplier
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ucp2_pam.Data.Entity.Supplier
-import com.example.ucp2_pam.Repository.RepositoryBrg
 import com.example.ucp2_pam.Repository.RepositorySpl
 import kotlinx.coroutines.launch
 

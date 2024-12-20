@@ -1,4 +1,4 @@
-package com.example.ucp2_pam.ui.viewmodel
+package com.example.ucp2_pam.ui.viewmodel.Supplier
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class SplViewModel ( private val repositorySpl: RepositorySpl) : ViewModel() {
+class HomeSplViewModel ( private val repositorySpl: RepositorySpl) : ViewModel() {
 
     val splUiState: StateFlow<SplUiState> = repositorySpl.getAllSpl()
         .filterNotNull()

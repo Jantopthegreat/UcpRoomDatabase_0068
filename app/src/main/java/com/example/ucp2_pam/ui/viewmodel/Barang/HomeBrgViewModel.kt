@@ -1,4 +1,4 @@
-package com.example.ucp2_pam.ui.viewmodel
+package com.example.ucp2_pam.ui.viewmodel.Barang
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

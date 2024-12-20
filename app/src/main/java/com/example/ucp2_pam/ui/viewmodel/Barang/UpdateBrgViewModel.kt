@@ -1,4 +1,4 @@
-package com.example.ucp2_pam.ui.viewmodel
+package com.example.ucp2_pam.ui.viewmodel.Barang
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class UpdateMhsViewModel (
+class UpdateBrgViewModel (
     savedStateHandle: SavedStateHandle,
     private val repositoryBrg: RepositoryBrg
 ) : ViewModel() {
@@ -21,7 +21,7 @@ class UpdateMhsViewModel (
     var updateUIState by mutableStateOf(BarangUiState())
         private set
 
-    private val _id: String = checkNotNull(savedStateHandle[DestinasiUpdateBrg.ID])
+    private val _id: String = checkNotNull(savedStateHandle[DestinasiUpdateBrg.IDBrg])
 
     init {
         viewModelScope.launch {

@@ -1,4 +1,4 @@
-package com.example.ucp2_pam.ui.viewmodel
+package com.example.ucp2_pam.ui.viewmodel.Barang
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -22,7 +22,7 @@ class DetailBrgViewModel (
     private val repositoryBrg: RepositoryBrg,
 
     ) : ViewModel() {
-    private val id_brg: String = checkNotNull(savedStateHandle[DestinasiDetailBrg.ID])
+    private val id_brg: String = checkNotNull(savedStateHandle[DestinasiDetailBrg.IDBrg])
 
 
     val detailBrgUiState: StateFlow<DetailBrgUiState> = repositoryBrg.getBrg(id_brg)

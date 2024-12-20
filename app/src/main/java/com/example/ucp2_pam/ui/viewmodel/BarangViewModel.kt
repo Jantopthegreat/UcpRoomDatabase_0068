@@ -3,6 +3,20 @@ package com.example.ucp2_pam.ui.viewmodel
 import com.example.ucp2_pam.Data.Entity.Barang
 
 
+data class FormErrorState(
+    val id: String? = null,
+    val nama_brg: String? = null,
+    val deskripsi: String? = null,
+    val harga: String? = null,
+    val stok: Int? = null,
+    val nama_Suplier: String? = null,
+) {
+
+    fun isValid(): Boolean{
+        return id == null && nama_brg == null && deskripsi == null &&
+                harga == null && stok == null && nama_Suplier == null
+    }
+}
 
 data class BarangUiState(
     val barangEvent: BarangEvent = BarangEvent(),

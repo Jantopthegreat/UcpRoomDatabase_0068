@@ -10,7 +10,7 @@ import com.example.ucp2_pam.Repository.RepositoryBrg
 import kotlinx.coroutines.launch
 
 
-class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
+class BarangViewModel (private val repositoryBrg: RepositoryBrg): ViewModel() {
 
     var uiState by mutableStateOf(BarangUiState())
 
@@ -19,9 +19,11 @@ class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
             barangEvent = barangEvent,
         )
     }
+
+
     fun validateFields(): Boolean {
         val event = uiState.barangEvent
-        val errorState = FormErrorState(
+        val errorState = BarangFormErrorState(
             id = if (event.id.isNotEmpty()) null else "ID tidak boleh kosong",
             nama_brg = if (event.nama_brg.isNotEmpty()) null else "Nama Barang tidak boleh kosong",
             deskripsi = if (event.deskripsi.isNotEmpty()) null else "Deskripsi tidak boleh kosong",
@@ -33,6 +35,7 @@ class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
         return errorState.isValid()
     }
 
+
     fun saveData(){
         val currentEvent = uiState.barangEvent
 
@@ -43,7 +46,7 @@ class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
                     uiState = uiState.copy(
                         snackBarMessage = "Data Berhasil Disimpan",
                         barangEvent = BarangEvent(),
-                        isEntryValid = FormErrorState()
+                        isEntryValid = BarangFormErrorState()
                     )
 
                 }
@@ -66,7 +69,7 @@ class BarangViewModel (private  val repositoryBrg: RepositoryBrg): ViewModel() {
 }
 
 
-data class FormErrorState(
+data class BarangFormErrorState(
     val id: String? = null,
     val nama_brg: String? = null,
     val deskripsi: String? = null,
@@ -83,7 +86,7 @@ data class FormErrorState(
 
 data class BarangUiState(
     val barangEvent: BarangEvent = BarangEvent(),
-    val isEntryValid: FormErrorState = FormErrorState(),
+    val isEntryValid: BarangFormErrorState = BarangFormErrorState(),
     val snackBarMessage: String? = null,
 )
 

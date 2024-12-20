@@ -24,7 +24,7 @@ class SupplierViewModel (private val repositorySpl: RepositorySpl): ViewModel() 
     fun validateFields(): Boolean{
         val event = uiState.supplierEvent
         val errorState = SupplierFormErrorState(
-            id = if (event.id.isNotEmpty()) null else "ID tidak boleh kosong",
+            id_spl = if (event.id_spl.isNotEmpty()) null else "ID tidak boleh kosong",
             nama_spl = if (event.nama_spl.isNotEmpty()) null else "Nama Supplier tidak boleh kosong",
             kontak = if (event.kontak.isNotEmpty()) null else "kontak tidak boleh kosong",
             alamat = if (event.alamat.isNotEmpty()) null else "Alamat tidak boleh kosong",
@@ -68,7 +68,7 @@ class SupplierViewModel (private val repositorySpl: RepositorySpl): ViewModel() 
 
 
 data class SupplierFormErrorState(
-    val id: String? = null,
+    val id_spl: String? = null,
     val nama_spl: String? = null,
     val kontak: String? = null,
     val alamat: String? = null
@@ -76,7 +76,7 @@ data class SupplierFormErrorState(
 ) {
 
     fun isValid(): Boolean{
-        return id == null
+        return id_spl == null
                 && nama_spl == null
                 && kontak == null
                 && alamat == null
@@ -90,7 +90,7 @@ data class SupplierUiState(
 )
 
 data class SupplierEvent (
-    val id: String = "",
+    val id_spl: String = "",
     val nama_spl: String = "",
     val kontak: String = "",
     val alamat: String = ""
@@ -99,7 +99,7 @@ data class SupplierEvent (
 
 
 fun SupplierEvent.toSupplierEntity() : Supplier = Supplier (
-    id = id,
+    id_spl = id_spl,
     nama_spl = nama_spl,
     kontak = kontak,
     alamat = alamat

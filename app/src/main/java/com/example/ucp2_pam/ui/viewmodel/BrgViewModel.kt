@@ -13,25 +13,26 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class BrgViewModel ( private val repositoryBrg: RepositoryBrg ) : ViewModel() {
+class BrgViewModel(private val repositoryBrg: RepositoryBrg) : ViewModel() {
 
     val brgUiState: StateFlow<BrgUiState> = repositoryBrg.getAllBrg()
         .filterNotNull()
-        .map {
+        .map { listBarang ->
             BrgUiState(
-                listBrg = it.toList(),
-                isLoading = false,
+                listBrg = listBarang,
+                cardColors = listBarang.map { barang -> getCardColor(barang.stok) },
+                isLoading = false
             )
         }
         .onStart {
-            emit (BrgUiState(isLoading = true))
+            emit(BrgUiState(isLoading = true))
             delay(900)
         }
         .catch {
             emit(
                 BrgUiState(
                     isLoading = false,
-                    isError = false,
+                    isError = true,
                     errorMessage = it.message ?: "Terjadi Kesalahan"
                 )
             )
@@ -40,13 +41,22 @@ class BrgViewModel ( private val repositoryBrg: RepositoryBrg ) : ViewModel() {
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = BrgUiState(
-                isLoading = true,
+                isLoading = true
             )
         )
+
+    private fun getCardColor(stock: Int): String {
+        return when {
+            stock == 0 -> "gray"
+            stock in 1..10 -> "red"
+            else -> "green"
+        }
+    }
 }
 
-data class BrgUiState (
-    val listBrg : List<Barang> = listOf(),
+data class BrgUiState(
+    val listBrg: List<Barang> = listOf(),
+    val cardColors: List<String> = listOf(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessage: String = ""

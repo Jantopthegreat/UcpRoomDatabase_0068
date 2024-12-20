@@ -9,9 +9,9 @@ data class Barang(
     val id: String,
     val nama_brg: String,
     val deskripsi: String,
-    val Harga: String,
-    val Stok: String,
-    val Nama_Suplier: String,
+    val harga: String,
+    val stok: String,
+    val nama_Suplier: String,
 
 
 

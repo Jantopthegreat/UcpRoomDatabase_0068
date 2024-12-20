@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.ucp2_pam.Data.Entity.Barang
 import com.example.ucp2_pam.Repository.RepositoryBrg
+import com.example.ucp2_pam.ui.navigation.DestinasiDetailBrg
 
 
 class DetailBrgViewModel (
@@ -11,7 +12,7 @@ class DetailBrgViewModel (
     private val repositoryBrg: RepositoryBrg,
 
     ) : ViewModel() {
-    private val id_brg: String = checkNotNull(savedStateHandle[DestinasiDetail.NIM])
+    private val id_brg: String = checkNotNull(savedStateHandle[DestinasiDetailBrg.ID])
 
 
 

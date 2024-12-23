@@ -18,8 +18,8 @@ interface BarangDao {
     @Query("SELECT * FROM barang")
     fun getAllBrg(): Flow<List<Barang>>
 
-    @Query("SELECT * FROM barang WHERE id = :id ")
-    fun getBrg(id: String): Flow<Barang>
+    @Query("SELECT * FROM barang WHERE id_brg = :id_brg ")
+    fun getBrg(id_brg: String): Flow<Barang>
 
     @Delete
     suspend fun deleteBrg(barang: Barang)

@@ -41,6 +41,38 @@ import com.example.ucp2_pam.ui.viewmodel.Barang.toBarangEntity
 import com.example.ucp2_pam.ui.viewmodel.PenyediaViewModel
 
 
+
+@Composable
+fun ItemDetailBrg (
+    modifier: Modifier = Modifier,
+    barang: Barang,
+){
+    Card (
+        modifier = modifier
+            .fillMaxWidth (),
+        colors = CardDefaults.cardColors (
+            containerColor = Color(0xFFF9E7FD),
+        )
+    ){
+        Column (
+            modifier = Modifier.padding(16.dp)
+        ){
+            ComponentDetailMhs (judul = "ID Barang", isinya = barang. id_brg)
+            Spacer (modifier = Modifier.padding(4.dp))
+
+            ComponentDetailMhs (judul = "Nama Barang", isinya = barang. nama_brg)
+            Spacer (modifier = Modifier.padding(4.dp))
+            ComponentDetailMhs (judul = "Deskripsi Barang", isinya = barang.deskripsi)
+            Spacer (modifier = Modifier.padding(4.dp))
+            ComponentDetailMhs (judul = "Harga Barang", isinya = barang.harga)
+            Spacer (modifier = Modifier.padding(4.dp))
+            ComponentDetailMhs (judul = "Stok Barang", isinya = barang.stok.toString())
+            Spacer (modifier = Modifier.padding(4.dp))
+            ComponentDetailMhs (judul = "Nama Supplier", isinya = barang.nama_Suplier)
+        }
+    }
+}
+
 @Composable
 fun ComponentDetailMhs (
     modifier: Modifier = Modifier,

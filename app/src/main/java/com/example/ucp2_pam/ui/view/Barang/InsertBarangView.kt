@@ -41,7 +41,61 @@ import com.example.ucp2_pam.ui.viewmodel.PenyediaViewModel
 import com.example.ucp2_pam.ui.viewmodel.Supplier.HomeSplViewModel
 import kotlinx.coroutines.launch
 
+object  DestinasiInsert : AlamatNavigasi{
+    override val route: String = "insert_mhs"
+}
 
+@Composable
+fun InsertBarangView (
+    onBack: () -> Unit,
+    onNavigate: () -> Unit,
+    modifier: Modifier = Modifier,
+    onLogoClick: () -> Unit = { },
+    viewModel: BarangViewModel = viewModel(factory = PenyediaViewModel.Factory)
+){
+
+    val uiState = viewModel.uiState
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(uiState.snackBarMessage){
+        uiState.snackBarMessage?.let{ message ->
+            coroutineScope.launch {
+                snackbarHostState.showSnackbar(message)
+                viewModel.resetSnackBarMessage()
+            }
+        }
+    }
+    Scaffold (
+        modifier = modifier,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState)}
+    ){ padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(16.dp)
+        ){
+            TopAppBar(
+                judul = "Daftar Barang",
+                showBackButton = true,
+                onBack = onBack,
+                onLogoClick = onLogoClick,
+                modifier = modifier
+            )
+            InsertBodyBarang (
+                uiState = uiState,
+                onValueChange = { updateEvent ->
+                    viewModel.updateState(updateEvent)
+                },
+                onClick = {
+                    viewModel.saveData()
+                    onNavigate()
+                }
+            )
+        }
+    }
+}
 
 @Composable
 fun InsertBodyBarang(

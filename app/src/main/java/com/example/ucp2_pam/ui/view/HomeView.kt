@@ -52,7 +52,97 @@ fun HomeView(
         else -> "Selamat Malam"
     }
 
+    Surface(
+        modifier = modifier.fillMaxSize(),
+        color = Color.White
 
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 10.dp)
+                .padding(top = 10.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp)
+                    .padding(10.dp)
+            ) {
+                Text(
+                    text = "Halo,",
+                    fontSize = 15.sp,
+                    color = Color.DarkGray,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(start = 16.dp, top = 10.dp)
+                )
+                Text(
+                    text = greeting,
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(start = 16.dp, top = 30.dp)
+                )
+                IconButton(
+                    onClick = onLogoClick,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(end = 30.dp, top = 15.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo2),
+                        contentDescription = "Logo",
+                        modifier = Modifier.size(30.dp)
+                    )
+                }
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(10.dp)
+                    .offset(y = (-40).dp)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Text(
+                        text = "Mulai Kelola Gudang Anda",
+                        modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
+                        fontSize = 20.sp
+                        )
+
+                    MenuCard(
+                        title = "Lihat Barang",
+                        icon = Icons.Default.Menu,
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = onLihatBarangClick
+                    )
+                    MenuCard(
+                        title = "Tambah Barang",
+                        icon = Icons.Default.Add,
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = onTambahBarangClick
+                    )
+                    MenuCard(
+                        title = "Lihat Supplier",
+                        icon = Icons.Default.AccountCircle,
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = onLihatSupplierClick
+                    )
+                    MenuCard(
+                        title = "Tambah Supplier",
+                        icon = Icons.Default.Add,
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = onTambahSupplierClick
+                    )
+                }
+            }
+        }
+    }
+}
 
 
 @OptIn(ExperimentalMaterial3Api::class)

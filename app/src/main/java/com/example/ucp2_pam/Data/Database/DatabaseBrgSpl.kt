@@ -10,7 +10,7 @@ import com.example.ucp2_pam.Data.Entity.Barang
 import com.example.ucp2_pam.Data.Entity.Supplier
 
 
-@Database (entities = [Barang::class], [Supplier::class], version = 1, exportSchema = false)
+@Database (entities = [Barang::class, Supplier::class], version = 1, exportSchema = false)
 
 abstract class DatabaseBrgSpl : RoomDatabase() {
 

@@ -45,6 +45,40 @@ import kotlinx.coroutines.launch
 
 
 @Composable
+fun HomeBarangView (
+    viewModel: HomeBrgViewModel = viewModel (factory = PenyediaViewModel. Factory),
+    onDetailClick: (String) -> Unit = { },
+    onBack: () -> Unit,
+    onLogoClick: () -> Unit = { },
+    modifier: Modifier = Modifier
+) {
+    Scaffold(
+        modifier= Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .padding(top = 18.dp),
+        topBar = {
+            TopAppBar(
+                judul = "Daftar Barang",
+                showBackButton = true,
+                onBack = onBack,
+                onLogoClick = onLogoClick,
+                modifier = modifier
+            )
+        },
+    ) { innerPadding ->
+        val brgUiState by viewModel.brgUiState.collectAsState()
+
+        BodyHomeBrgView(
+            brgUiState = brgUiState,
+            onClick = {
+                onDetailClick(it)
+            },
+            modifier = Modifier.padding(innerPadding).padding(top = 10.dp)
+        )
+    }
+}
+@Composable
 fun BodyHomeBrgView (
     brgUiState: BrgUiState,
     onClick: (String) -> Unit = { },

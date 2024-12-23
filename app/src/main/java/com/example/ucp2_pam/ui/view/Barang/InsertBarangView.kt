@@ -44,6 +44,37 @@ import kotlinx.coroutines.launch
 
 
 @Composable
+fun InsertBodyBarang(
+    modifier: Modifier = Modifier,
+    onValueChange: (BarangEvent) -> Unit,
+    uiState: BarangUiState,
+    onClick: () -> Unit
+) {
+    Column(
+        modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        FormBarang(
+            barangEvent = uiState.barangEvent,
+            onValueChange = onValueChange,
+            errorState = uiState.isEntryValid,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(modifier = Modifier.padding(10.dp))
+        Button(
+            onClick = onClick,
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF4C0062)
+            )
+        ) {
+            Text("Simpan")
+        }
+    }
+}
+
+@Composable
 fun FormBarang(
     barangEvent: BarangEvent = BarangEvent(),
     onValueChange: (BarangEvent) -> Unit = {},

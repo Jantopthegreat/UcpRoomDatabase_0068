@@ -43,6 +43,28 @@ import com.example.ucp2_pam.ui.viewmodel.Supplier.SplUiState
 import kotlinx.coroutines.launch
 
 
+@Composable
+fun ListSupplier (
+    listSpl: List<Supplier>,
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit = { }
+) {
+    LazyColumn(
+        modifier = modifier
+
+    ) {
+        items(
+            items = listSpl ,
+            itemContent = { spl ->
+                CardSpl(
+                    spl = spl,
+                    onClick = { onClick(spl.id_spl) }
+                )
+            }
+        )
+    }
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ucp2_pam.Data.Entity.Barang
 import com.example.ucp2_pam.Repository.RepositoryBrg
 import com.example.ucp2_pam.ui.navigation.DestinasiDetailBrg
+import com.example.ucp2_pam.ui.viewmodel.Supplier.SupplierEvent
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.SharingStarted
@@ -65,6 +66,7 @@ class DetailBrgViewModel (
 
 data class DetailBrgUiState(
     val detailBrgUiEvent: BarangEvent = BarangEvent(),
+    val supplier: SupplierEvent = SupplierEvent(),
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val errorMessage: String = ""

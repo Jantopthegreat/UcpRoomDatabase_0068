@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 
+
 class DetailBrgViewModel (
     savedStateHandle: SavedStateHandle,
     private val repositoryBrg: RepositoryBrg,

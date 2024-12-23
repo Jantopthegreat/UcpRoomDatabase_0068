@@ -41,6 +41,71 @@ import com.example.ucp2_pam.ui.viewmodel.Barang.toBarangEntity
 import com.example.ucp2_pam.ui.viewmodel.PenyediaViewModel
 
 
+@Composable
+fun BodyDetailMhs (
+    modifier: Modifier = Modifier,
+    detailUiState: DetailBrgUiState = DetailBrgUiState(),
+    onDeleteClick: () -> Unit = { }
+) {
+    var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
+    when {
+        detailUiState.isLoading -> {
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+
+        detailUiState.isUiEventNotEmpty -> {
+            Column(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                ItemDetailBrg(
+                    barang = detailUiState.detailBrgUiEvent.toBarangEntity(),
+                    modifier = Modifier
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Button(
+                    onClick = {
+                        deleteConfirmationRequired = true
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF4C0062)
+                    )
+                ) {
+                    Text(text = "Delete")
+                }
+                if (deleteConfirmationRequired) {
+                    DeleteConfirmationDialog(
+                        onDeleteConfirm = {
+                            deleteConfirmationRequired = false
+                            onDeleteClick()
+                        },
+                        onDeleteCancel = { deleteConfirmationRequired = false },
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+            }
+        }
+
+        detailUiState.isUiEventEmpty -> {
+            Box(
+                modifier = modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Data tidak ditemukan",
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+    }
+}
 
 @Composable
 fun ItemDetailBrg (

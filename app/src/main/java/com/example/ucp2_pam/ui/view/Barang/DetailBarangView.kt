@@ -42,6 +42,59 @@ import com.example.ucp2_pam.ui.viewmodel.PenyediaViewModel
 
 
 @Composable
+fun DetailBarangView (
+    modifier: Modifier = Modifier,
+    viewModel: DetailBrgViewModel = viewModel (factory = PenyediaViewModel.Factory),
+    onBack: () -> Unit = { },
+    onLogoClick: () -> Unit = { },
+    onEditClick: (String) -> Unit = { },
+    onDeleteClick: () -> Unit = { }
+){
+    Scaffold (
+        modifier= Modifier
+            .fillMaxSize()
+            .padding(15.dp)
+            .padding(top = 18.dp),
+        topBar = {
+            TopAppBar (
+                judul = "Detail Barang",
+                showBackButton = true,
+                onBack = onBack,
+                modifier = modifier,
+                onLogoClick = onLogoClick
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    onEditClick(viewModel.detailBrgUiState.value.detailBrgUiEvent.id_brg)
+                },
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(16.dp),
+                containerColor = Color(0xFFF9E7FD)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Edit Barang",
+                    tint = Color.Black
+
+                )
+            }
+        }
+    ) { innerPadding ->
+        val detailBarangUiState by viewModel.detailBrgUiState.collectAsState()
+
+        BodyDetailMhs(
+            modifier = Modifier.padding(innerPadding),
+            detailUiState = detailBarangUiState,
+            onDeleteClick = {
+                viewModel.deleteBrg()
+                onDeleteClick()
+            }
+        )
+    }
+}
+@Composable
 fun BodyDetailMhs (
     modifier: Modifier = Modifier,
     detailUiState: DetailBrgUiState = DetailBrgUiState(),

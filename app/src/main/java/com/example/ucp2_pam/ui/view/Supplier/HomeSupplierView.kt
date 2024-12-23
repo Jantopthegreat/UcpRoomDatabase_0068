@@ -43,6 +43,64 @@ import com.example.ucp2_pam.ui.viewmodel.Supplier.SplUiState
 import kotlinx.coroutines.launch
 
 
+
+@Composable
+fun BodyHomeSplView (
+    splUiState: SplUiState,
+    onClick: (String) -> Unit = { },
+    modifier: Modifier = Modifier
+) {
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+    when {
+        splUiState.isLoading -> {
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+
+        splUiState.isError -> {
+            LaunchedEffect(splUiState.errorMessage) {
+                splUiState.errorMessage?.let { message ->
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(message)
+                    }
+                }
+            }
+        }
+
+        splUiState.listSpl.isEmpty() -> {
+            Box(
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Tidak ada data Supplier.",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+
+        else -> {
+            ListSupplier(
+                listSpl = splUiState.listSpl,
+                onClick = {
+                    onClick(it)
+                    println(
+                        it
+                    )
+                },
+                modifier = modifier
+            )
+        }
+    }
+}
+
 @Composable
 fun ListSupplier (
     listSpl: List<Supplier>,

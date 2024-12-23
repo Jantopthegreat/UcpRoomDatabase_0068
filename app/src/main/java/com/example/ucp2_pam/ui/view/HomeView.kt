@@ -35,6 +35,24 @@ import com.example.UCP2_PAM.R
 import java.time.LocalTime
 
 
+@Composable
+fun HomeView(
+    onLihatBarangClick: () -> Unit = {},
+    onLihatSupplierClick: () -> Unit = {},
+    onTambahBarangClick: () -> Unit = {},
+    onTambahSupplierClick: () -> Unit = {},
+    onLogoClick: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
+    val currentHour = LocalTime.now().hour
+    val greeting = when (currentHour) {
+        in 5..11 -> "Selamat Pagi"
+        in 12..15 -> "Selamat Siang"
+        in 16..18 -> "Selamat Sore"
+        else -> "Selamat Malam"
+    }
+
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)

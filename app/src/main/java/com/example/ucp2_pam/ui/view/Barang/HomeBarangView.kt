@@ -45,6 +45,29 @@ import kotlinx.coroutines.launch
 
 
 
+@Composable
+fun ListBarang (
+    listBrg: List<Barang>,
+    modifier: Modifier = Modifier,
+    onClick: (String) -> Unit = { }
+) {
+    LazyColumn(
+        modifier = modifier
+
+    ) {
+        items(
+            items = listBrg,
+            itemContent = { brg ->
+                CardBrg(
+                    brg = brg,
+                    onClick = { onClick(brg.id_brg) }
+                )
+            }
+        )
+    }
+}
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardBrg (

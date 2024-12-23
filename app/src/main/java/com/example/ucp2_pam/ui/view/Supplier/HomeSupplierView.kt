@@ -43,6 +43,36 @@ import com.example.ucp2_pam.ui.viewmodel.Supplier.SplUiState
 import kotlinx.coroutines.launch
 
 
+@Composable
+fun HomeSupplierView (
+    viewModel: HomeSplViewModel = viewModel (factory = PenyediaViewModel. Factory),
+    modifier: Modifier = Modifier,
+    onBack: () -> Unit,
+    onLogoClick: () -> Unit = { },
+) {
+    Scaffold(
+        modifier= Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .padding(top = 18.dp),
+        topBar = {
+            TopAppBar(
+                judul = "Daftar Barang",
+                showBackButton = true,
+                onBack = onBack,
+                onLogoClick = onLogoClick,
+                modifier = modifier
+            )
+        },
+    ) { innerPadding ->
+        val splUiState by viewModel.splUiState.collectAsState()
+
+        BodyHomeSplView(
+            splUiState = splUiState,
+            modifier = Modifier.padding(innerPadding).padding(top = 10.dp)
+        )
+    }
+}
 
 @Composable
 fun BodyHomeSplView (

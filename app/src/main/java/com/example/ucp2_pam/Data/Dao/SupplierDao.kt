@@ -16,7 +16,7 @@ interface SupplierDao {
     @Query ("SELECT * FROM supplier")
     fun getAllSpl() : Flow<List<Supplier>>
 
-    @Query ("SELECT * FROM supplier WHERE id= :id")
-    fun getSpl (id: String)
+    @Query ("SELECT * FROM supplier WHERE id_spl = :id_sply")
+    fun getSpl (id_sply: String) : Flow<Supplier>
 
 }

@@ -203,7 +203,7 @@ fun CardBrg (
                 Icon(imageVector = Icons.Filled.Info, contentDescription = "")
                 Spacer(modifier = Modifier.padding(4.dp))
                 Text(
-                    text = brg.id_brg,
+                    text = brg.stok.toString(),
                     fontSize = 16.sp
                 )
             }

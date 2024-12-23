@@ -5,7 +5,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.ucp2_pam.brgSplApp
+import com.example.ucp2_pam.BrgSplApp
 import com.example.ucp2_pam.ui.viewmodel.Barang.BarangViewModel
 import com.example.ucp2_pam.ui.viewmodel.Barang.DetailBrgViewModel
 import com.example.ucp2_pam.ui.viewmodel.Barang.HomeBrgViewModel
@@ -50,7 +50,5 @@ object PenyediaViewModel {
     }
 }
 
-
-
-fun CreationExtras.brgSplApp(): brgSplApp =
-    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as brgSplApp)
+fun CreationExtras.brgSplApp(): BrgSplApp =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as BrgSplApp)

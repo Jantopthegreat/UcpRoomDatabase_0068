@@ -28,7 +28,6 @@ class BarangViewModel (private val repositoryBrg: RepositoryBrg): ViewModel() {
             nama_brg = if (event.nama_brg.isNotEmpty()) null else "Nama Barang tidak boleh kosong",
             deskripsi = if (event.deskripsi.isNotEmpty()) null else "Deskripsi tidak boleh kosong",
             harga = if (event.harga.isNotEmpty()) null else "Harga tidak boleh kosong",
-            stok = if (event.stok > 0) null else "Stok tidak boleh kosong atau kurang dari 1",
             nama_Suplier = if (event.nama_Suplier.isNotEmpty()) null else "Nama Supplier tidak boleh kosong",
         )
         uiState = uiState.copy(isEntryValid = errorState)
